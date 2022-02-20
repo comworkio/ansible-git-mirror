@@ -1,0 +1,24 @@
+---
+
+mirror_home: /home/centos
+
+git_config_email: youremail@gmail.com
+
+git_credentials: []
+# git_credentials:
+#   - https://xxxxxx:yyyyyy@bitbucket.org
+#   - https://xxxxxx:yyyyyy@gitlab.comwork.io
+#   - https://xxxxxx:yyyyyy@gitlab.com
+#   - https://xxxxxx:yyyyyy@github.com
+
+git_mirrors: []
+# git_mirrors:
+#   - name: bar
+#     url: https://gitlab.comwork.io/foo/bar.git
+#     remotes:
+#       - name: pgitlab
+#         url: https://gitlab.com/foo/bar.git
+#       - name: github
+#         url: https://github.com/foo/bar.git
+#       - name: bitbucket
+#         url: https://idrissneumann@bitbucket.org/foo/bar.git

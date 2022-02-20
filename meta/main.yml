@@ -1,0 +1,10 @@
+galaxy_info:
+  role_name: git-mirrors
+  author: Idriss Neumann
+  description: Install and configure git mirrors repos
+  company: Comwork
+
+  min_ansible_version: 2.2
+
+  platforms:
+    - name: CentOS

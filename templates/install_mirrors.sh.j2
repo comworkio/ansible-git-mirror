@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+{% for mirror in git_mirrors %}
+cd {{ mirror_home }}
+if [[ ! -d "{{ mirror.name }}" ]]; then
+  git clone {{ mirror.url }} {{ mirror.name }}
+fi
+cd {{ mirror.name }}
+{% if mirror.remotes is defined and mirror.remotes %}
+{% for remote in mirror.remotes %}
+{% if remote.force_recreate is defined and remote.force_recreate %}
+git remote delete {{ remote.name }} 2>/dev/null || :
+{% endif %}
+if ! git remote get-url {{ remote.name }} >/dev/null 2>&1; then
+  git remote add {{ remote.name }} {{ remote.url }}
+fi
+{% endfor %}
+{% endif %}
+git config credential.helper store
+{% endfor %}
