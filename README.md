@@ -12,6 +12,7 @@ Ansible role for installing a list git mirrors on a gitlab runner.
 * Github mirror: https://github.com/idrissneumann/ansible-git-mirror.git
 * Gitlab mirror: https://gitlab.com/ineumann/ansible-git-mirror.git
 * Bitbucket mirror: https://bitbucket.org/idrissneumann/ansible-git-mirror.git
+* Froggit mirror: https://lab.frogg.it/ineumann/ansible-git-mirror.git
 
 ## Getting started
 
