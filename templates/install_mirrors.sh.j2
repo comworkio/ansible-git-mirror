@@ -4,6 +4,11 @@
 cd {{ mirror_home }}
 if [[ ! -d "{{ mirror.name }}" ]]; then
   git clone {{ mirror.url }} {{ mirror.name }}
+else
+  cd "{{ mirror.name }}"
+  git remote remove origin
+  git remote add origin {{ mirror.url }}
+  cd -
 fi
 cd {{ mirror.name }}
 {% if mirror.remotes is defined and mirror.remotes %}
@@ -11,9 +16,10 @@ cd {{ mirror.name }}
 {% if remote.force_recreate is defined and remote.force_recreate %}
 git remote delete {{ remote.name }} 2>/dev/null || :
 {% endif %}
-if ! git remote get-url {{ remote.name }} >/dev/null 2>&1; then
-  git remote add {{ remote.name }} {{ remote.url }}
+if git remote get-url {{ remote.name }} >/dev/null 2>&1; then
+  git remote remove {{ remote.name }}
 fi
+git remote add {{ remote.name }} {{ remote.url }}
 {% endfor %}
 {% endif %}
 git config credential.helper store
